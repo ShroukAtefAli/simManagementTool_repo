@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509132921",
+  "clientRootFolder": "simManagementTool",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bucket",
+  "fields": [
+    {
+      "fieldName": "bucketName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bucketCapacity",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bucketType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bucketDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ratePlan",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagementTool",
+  "name": "Bucket",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dial",
+      "otherEntityRelationshipName": "bucket",
+      "ownerSide": false,
+      "relationshipName": "dial",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "bucket",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
