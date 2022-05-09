@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509132922",
+  "clientRootFolder": "simManagementTool",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "alert",
+  "fields": [
+    {
+      "fieldName": "alertName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "alertCapacity",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "alertSmsMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "alertEmailMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "alertSmsMessageActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "alertEmailMessageActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "alertPeriod",
+      "fieldType": "AlertPeriod",
+      "fieldValues": "Daily,Weekly,Monthly,Yearly"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagementTool",
+  "name": "Alert",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

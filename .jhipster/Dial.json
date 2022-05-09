@@ -1,0 +1,88 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509132920",
+  "clientRootFolder": "simManagementTool",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "dial",
+  "fields": [
+    {
+      "fieldName": "dial",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dialConsumption",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "bucketdate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "contractStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contractDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "simNum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "volStatusFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apnName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "softDisconnect",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "billCycle",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "m2mMonitoringService",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagementTool",
+  "name": "Dial",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "bucket",
+      "otherEntityRelationshipName": "dial",
+      "ownerSide": true,
+      "relationshipName": "bucket",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "activeAlert",
+      "otherEntityRelationshipName": "dial",
+      "relationshipName": "activeAlert",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "dial",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

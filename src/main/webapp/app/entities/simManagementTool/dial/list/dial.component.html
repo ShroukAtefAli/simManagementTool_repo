@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="DialHeading">
+    <span jhiTranslate="simManagementToolApp.simManagementToolDial.home.title">Dials</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="simManagementToolApp.simManagementToolDial.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-dial"
+        [routerLink]="['/simmanagementtool/dial/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="simManagementToolApp.simManagementToolDial.home.createLabel"> Create a new Dial </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dials?.length === 0">
+    <span jhiTranslate="simManagementToolApp.simManagementToolDial.home.notFound">No dials found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="dials && dials.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.dial">Dial</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.activeAlertId">Active Alert Id</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.dialConsumption">Dial Consumption</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.bucketdate">Bucketdate</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.contractStatus">Contract Status</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.contractDate">Contract Date</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.simNum">Sim Num</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.volStatusFlag">Vol Status Flag</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.apnName">Apn Name</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.softDisconnect">Soft Disconnect</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.billCycle">Bill Cycle</span></th>
+          <th scope="col">
+            <span jhiTranslate="simManagementToolApp.simManagementToolDial.m2mMonitoringService">M 2 M Monitoring Service</span>
+          </th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.bucket">Bucket</span></th>
+          <th scope="col"><span jhiTranslate="simManagementToolApp.simManagementToolDial.customer">Customer</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dial of dials; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/simmanagementtool/dial', dial.id, 'view']">{{ dial.id }}</a>
+          </td>
+          <td>{{ dial.dial }}</td>
+          <td>{{ dial.activeAlertId }}</td>
+          <td>{{ dial.dialConsumption }}</td>
+          <td>{{ dial.bucketdate | formatMediumDate }}</td>
+          <td>{{ dial.contractStatus }}</td>
+          <td>{{ dial.contractDate | formatMediumDate }}</td>
+          <td>{{ dial.simNum }}</td>
+          <td>{{ dial.volStatusFlag }}</td>
+          <td>{{ dial.apnName }}</td>
+          <td>{{ dial.softDisconnect }}</td>
+          <td>{{ dial.billCycle }}</td>
+          <td>{{ dial.m2mMonitoringService }}</td>
+          <td>
+            <div *ngIf="dial.bucket">
+              <a [routerLink]="['/bucket', dial.bucket?.id, 'view']">{{ dial.bucket?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dial.customer">
+              <a [routerLink]="['/customer', dial.customer?.id, 'view']">{{ dial.customer?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/simmanagementtool/dial', dial.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/simmanagementtool/dial', dial.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(dial)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

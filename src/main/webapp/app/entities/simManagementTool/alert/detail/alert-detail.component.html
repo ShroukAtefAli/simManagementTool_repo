@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="alert">
+      <h2 data-cy="alertDetailsHeading"><span jhiTranslate="simManagementToolApp.simManagementToolAlert.detail.title">Alert</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ alert.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertName">Alert Name</span></dt>
+        <dd>
+          <span>{{ alert.alertName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertCapacity">Alert Capacity</span></dt>
+        <dd>
+          <span>{{ alert.alertCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertSmsMessage">Alert Sms Message</span></dt>
+        <dd>
+          <span>{{ alert.alertSmsMessage }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertEmailMessage">Alert Email Message</span></dt>
+        <dd>
+          <span>{{ alert.alertEmailMessage }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertSmsMessageActive">Alert Sms Message Active</span></dt>
+        <dd>
+          <span>{{ alert.alertSmsMessageActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertEmailMessageActive">Alert Email Message Active</span></dt>
+        <dd>
+          <span>{{ alert.alertEmailMessageActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementToolApp.simManagementToolAlert.alertPeriod">Alert Period</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'simManagementToolApp.AlertPeriod.' + alert.alertPeriod }}">{{ alert.alertPeriod }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagementtool/alert', alert.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
